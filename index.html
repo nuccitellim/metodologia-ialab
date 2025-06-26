@@ -3,468 +3,518 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Metodología de Implementación Agéntica - Proceso estructurado para la implementación de agentes de IA en organizaciones">
-    <title>Metodología de Implementación Agéntica | IALAB</title>
+    <title>Metodología de Implementación Agéntica UBA IALAB</title>
+    <meta name="description" content="Página conceptual basada en el estilo de IALAB, con enfoque en agentes de IA y niveles de madurez digital.">
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Roboto:wght@300;400;500;700&family=Bebas+Neue&display=swap" rel="stylesheet">
     
-    <!-- CSS Interno -->
     <style>
-        /* ===== RESET Y CONFIGURACIÓN GLOBAL ===== */
+        /* ====== CSS RESET ====== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* ====== CSS VARIABLES ====== */
+        :root {
+            --azul-oscuro: #051431;
+            --morado: #7D539D;
+            --verde-azulado: #203958;
+            --gris-claro: #F1F1F1;
+            --blanco: #FFFFFF;
+            --negro: #000000;
+            
+            --font-primary: 'Lato', sans-serif;
+            --font-secondary: 'Roboto', sans-serif;
+            --font-accent: 'Bebas Neue', cursive;
+            
+            /* Mejores variables de spacing y layout */
+            --max-width: 1400px;
+            --content-padding: 40px;
+            --section-spacing: 100px;
+        }
+
+        /* ====== ESTILOS GLOBALES MEJORADOS ====== */
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Lato', 'Roboto', sans-serif;
+            font-family: var(--font-primary);
             line-height: 1.6;
-            color: #051431;
-            background-color: #FFFFFF;
+            color: var(--azul-oscuro);
+            background-color: var(--blanco);
+            /* Mejor centrado global */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* ===== VARIABLES CSS ===== */
-        :root {
-            --color-primary: #051431;
-            --color-secondary: #7D539D;
-            --color-tertiary: #203958;
-            --color-light-gray: #F1F1F1;
-            --color-white: #FFFFFF;
-            --color-black: #000000;
-            
-            --font-primary: 'Lato', sans-serif;
-            --font-secondary: 'Roboto', sans-serif;
-            --font-display: 'Bebas Neue', cursive;
-            
-            --container-max-width: 1200px;
-            --section-padding: 80px 0;
-            --border-radius: 8px;
-            --box-shadow: 0 4px 20px rgba(5, 20, 49, 0.1);
-        }
-
-        /* ===== UTILIDADES GLOBALES ===== */
+        /* Contenedor principal mejorado */
         .container {
-            max-width: var(--container-max-width);
+            max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 var(--content-padding);
+            width: 100%;
         }
 
-        .section-title {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            color: var(--color-primary);
-            text-align: center;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
+        /* Contenedor para centrado perfecto de contenido */
+        .content-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .section-description {
-            font-size: 1.1rem;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 3rem;
-            color: var(--color-tertiary);
-            line-height: 1.7;
-        }
-
-        /* ===== HEADER ===== */
-        .header {
-            background-color: var(--color-white);
-            box-shadow: var(--box-shadow);
+        /* ====== HEADER MEJORADO ====== */
+        header {
+            background-color: var(--blanco);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 1000;
-            padding: 1rem 0;
         }
 
-        .header-content {
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 1rem 0;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding-left: var(--content-padding);
+            padding-right: var(--content-padding);
         }
 
-        .logo-img {
-            height: 50px;
+        .logo img {
+            height: 60px;
             width: auto;
-            object-fit: contain;
         }
 
-        .nav-list {
+        .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
+            align-items: center;
         }
 
-        .nav-list a {
+        .nav-links a {
             text-decoration: none;
-            color: var(--color-primary);
+            color: var(--azul-oscuro);
             font-weight: 500;
-            font-size: 1rem;
             transition: color 0.3s ease;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
 
-        .nav-list a:hover {
-            color: var(--color-secondary);
+        .nav-links a:hover {
+            color: var(--morado);
+            background-color: rgba(125, 83, 157, 0.1);
         }
 
-        /* ===== MAIN CONTENT ===== */
-        .main {
-            margin-top: 80px; /* Compensar header fijo */
-        }
-
-        /* ===== HERO SECTION ===== */
+        /* ====== HERO SECTION MEJORADA ====== */
         .hero {
-            background: linear-gradient(135deg, var(--color-light-gray) 0%, var(--color-white) 100%);
-            padding: var(--section-padding);
+            background: linear-gradient(135deg, var(--azul-oscuro) 0%, var(--verde-azulado) 100%);
+            color: var(--blanco);
+            padding: 140px 0 var(--section-spacing);
             text-align: center;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        .hero-title {
-            font-family: var(--font-display);
-            font-size: 3.5rem;
-            color: var(--color-primary);
-            margin-bottom: 1rem;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-family: var(--font-accent);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 400;
+            margin-bottom: 1.5rem;
             letter-spacing: 2px;
+            line-height: 1.2;
         }
 
         .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--color-tertiary);
-            max-width: 700px;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            font-weight: 300;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .agent-first-badge {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--morado), #9B59B6);
+            padding: 20px 40px;
+            border-radius: 50px;
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(125, 83, 157, 0.4);
+            transform: perspective(1000px) rotateX(10deg);
+            transition: transform 0.3s ease;
+        }
+
+        .agent-first-badge:hover {
+            transform: perspective(1000px) rotateX(0deg) scale(1.05);
+        }
+
+        /* ====== SECCIONES MEJORADAS ====== */
+        .section {
+            padding: var(--section-spacing) 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: var(--font-accent);
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--azul-oscuro);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .section-intro {
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            color: var(--verde-azulado);
+            max-width: 900px;
             margin: 0 auto;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* ===== OVERVIEW SECTION ===== */
-        .overview {
-            padding: var(--section-padding);
-            background-color: var(--color-white);
+        /* ====== MADUREZ LEVELS MEJORADOS ====== */
+        .madurez-section {
+            background: var(--gris-claro);
         }
 
-        /* ===== PHASES SECTION ===== */
-        .phases {
-            padding: var(--section-padding);
-            background-color: var(--color-light-gray);
+        .madurez-levels {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+            align-items: start;
         }
 
-        .phase-card {
-            background-color: var(--color-white);
-            margin-bottom: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
+        .level-card {
+            background: var(--blanco);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .phase-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(5, 20, 49, 0.15);
-        }
-
-        .phase-header {
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-tertiary) 100%);
-            color: var(--color-white);
-            padding: 1.5rem 2rem;
+            height: 100%;
             display: flex;
-            align-items: center;
-            gap: 1rem;
+            flex-direction: column;
         }
 
-        .phase-number {
-            font-family: var(--font-display);
-            font-size: 2rem;
-            background-color: var(--color-secondary);
-            color: var(--color-white);
-            width: 50px;
-            height: 50px;
+        .level-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--morado), var(--verde-azulado));
+        }
+
+        .level-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .level-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--morado), var(--verde-azulado));
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .phase-title {
-            font-family: var(--font-primary);
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin: 0;
-        }
-
-        .phase-content {
-            padding: 2rem;
-        }
-
-        .phase-objective {
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-            color: var(--color-tertiary);
-            line-height: 1.7;
-        }
-
-        .phase-activities h4 {
-            color: var(--color-primary);
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .phase-activities ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .phase-activities li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: var(--color-tertiary);
-        }
-
-        .phase-activities li::before {
-            content: "→";
-            color: var(--color-secondary);
+            font-size: 2.2rem;
+            color: var(--blanco);
             font-weight: bold;
-            position: absolute;
-            left: 0;
         }
 
-        /* ===== TRANSVERSAL SECTION ===== */
-        .transversal {
-            padding: var(--section-padding);
-            background-color: var(--color-white);
+        .level-card h3 {
+            font-family: var(--font-secondary);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--azul-oscuro);
+            margin-bottom: 1.5rem;
         }
 
-        .transversal-grid {
+        .level-card p {
+            color: var(--verde-azulado);
+            line-height: 1.7;
+            text-align: left;
+            flex-grow: 1;
+            font-size: 1.05rem;
+        }
+
+        /* ====== METODOLOGIA MEJORADA ====== */
+        .metodologia-section {
+            background: var(--blanco);
+        }
+
+        .phases-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2.5rem;
             margin-top: 3rem;
         }
 
-        .transversal-item {
-            background-color: var(--color-light-gray);
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            text-align: center;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+        .phase-card {
+            background: linear-gradient(135deg, rgba(241, 241, 241, 0.5), var(--blanco));
+            border-radius: 25px;
+            padding: 2.5rem;
+            border-left: 6px solid var(--morado);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
-        .transversal-item:hover {
-            transform: translateY(-5px);
-            background-color: var(--color-white);
-            box-shadow: var(--box-shadow);
+        .phase-card:hover {
+            transform: translateX(15px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
 
-        .transversal-item h4 {
-            color: var(--color-primary);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
+        .phase-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
         }
 
-        .transversal-item p {
-            color: var(--color-tertiary);
+        .phase-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--morado), var(--verde-azulado));
+            color: var(--blanco);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .phase-card h3 {
+            font-family: var(--font-secondary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--azul-oscuro);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .phase-objective {
+            color: var(--verde-azulado);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            font-size: 1.05rem;
             line-height: 1.6;
+            padding: 1rem;
+            background: rgba(125, 83, 157, 0.05);
+            border-radius: 12px;
+            border-left: 4px solid var(--morado);
         }
 
-        /* ===== FOOTER ===== */
-        .footer {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            padding: 3rem 0 1rem;
+        /* ====== LISTAS MEJORADAS ====== */
+        .phase-activities {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
         }
 
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+        .phase-activities li {
+            padding: 0.8rem 0;
+            color: var(--azul-oscuro);
+            position: relative;
+            padding-left: 2rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.2s ease;
         }
 
-        .footer-section h4 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--color-white);
+        .phase-activities li:last-child {
+            border-bottom: none;
         }
 
-        .footer-section p {
-            color: #B0B8C8;
-            line-height: 1.6;
+        .phase-activities li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--morado);
+            font-weight: bold;
+            font-size: 1.1rem;
+            top: 0.8rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: rgba(125, 83, 157, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
         }
 
-        .footer-bottom {
-            border-top: 1px solid var(--color-tertiary);
+        .phase-activities li:hover {
+            padding-left: 2.3rem;
+            color: var(--morado);
+        }
+
+        .phase-details {
+            margin-top: auto;
             padding-top: 1.5rem;
+            border-top: 2px solid rgba(125, 83, 157, 0.1);
+        }
+
+        .phase-details h4 {
+            font-size: 1.1rem;
+            color: var(--azul-oscuro);
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+
+        .phase-details h4::before {
+            content: '📋';
+            margin-right: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .phase-details p {
+            font-size: 0.95rem;
+            color: var(--verde-azulado);
+            line-height: 1.6;
+            padding: 0.8rem;
+            background: rgba(32, 57, 88, 0.05);
+            border-radius: 8px;
+        }
+
+        /* ====== FOOTER MEJORADO ====== */
+        footer {
+            background: var(--azul-oscuro);
+            color: var(--blanco);
+            padding: 60px 0;
             text-align: center;
+            margin-top: auto;
         }
 
-        .footer-bottom p {
-            color: #B0B8C8;
-            font-size: 0.9rem;
+        footer p {
+            margin-bottom: 1rem;
+            opacity: 0.8;
+            font-size: 1.1rem;
         }
 
-        /* ===== RESPONSIVE DESIGN ===== */
+        footer p:last-child {
+            font-weight: 600;
+            opacity: 1;
+            font-size: 1.2rem;
+        }
 
-        /* Tablets (768px y menos) */
+        /* ====== RESPONSIVE MEJORADO ====== */
+        @media (max-width: 1200px) {
+            :root {
+                --content-padding: 30px;
+                --section-spacing: 80px;
+            }
+        }
+
         @media (max-width: 768px) {
-            /* Header responsive */
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
+            :root {
+                --content-padding: 20px;
+                --section-spacing: 60px;
             }
             
-            .logo-img {
-                height: 40px;
+            .nav-links {
+                display: none;
             }
             
-            .nav-list {
-                gap: 1rem;
+            .madurez-levels,
+            .phases-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
-            .nav-list a {
-                font-size: 0.9rem;
-            }
-            
-            /* Hero responsive */
-            .hero-title {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            /* Section titles responsive */
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            /* Phases responsive */
             .phase-header {
-                padding: 1rem 1.5rem;
                 flex-direction: column;
                 text-align: center;
-                gap: 0.5rem;
-            }
-            
-            .phase-title {
-                font-size: 1.2rem;
-            }
-            
-            .phase-content {
-                padding: 1.5rem;
-            }
-            
-            /* Transversal grid responsive */
-            .transversal-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .transversal-item {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Móviles (480px y menos) */
-        @media (max-width: 480px) {
-            /* Containers responsive */
-            .container {
-                padding: 0 15px;
-            }
-            
-            /* Reducir padding de secciones */
-            :root {
-                --section-padding: 50px 0;
-            }
-            
-            /* Header muy pequeño */
-            .header {
-                padding: 0.5rem 0;
-            }
-            
-            .logo-img {
-                height: 35px;
-            }
-            
-            .nav-list {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.8rem;
-            }
-            
-            /* Hero muy pequeño */
-            .hero-title {
-                font-size: 2rem;
-                letter-spacing: 1px;
-            }
-            
-            .hero-subtitle {
-                font-size: 1rem;
-            }
-            
-            /* Section titles muy pequeños */
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            /* Phase cards muy pequeñas */
-            .phase-header {
-                padding: 1rem;
             }
             
             .phase-number {
-                width: 40px;
-                height: 40px;
-                font-size: 1.5rem;
+                margin-right: 0;
+                margin-bottom: 1rem;
             }
             
-            .phase-title {
-                font-size: 1.1rem;
+            .hero {
+                min-height: 80vh;
+                padding: 120px 0 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            :root {
+                --content-padding: 15px;
             }
             
-            .phase-content {
-                padding: 1rem;
+            nav {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            
+            .logo img {
+                height: 45px;
+            }
+            
+            .level-card,
+            .phase-card {
+                padding: 2rem;
             }
             
             .phase-activities li {
-                padding-left: 1rem;
-                font-size: 0.9rem;
-            }
-            
-            /* Footer responsive */
-            .footer-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 1.5rem;
+                padding-left: 1.8rem;
+                font-size: 0.95rem;
             }
         }
 
-        /* Pantallas muy grandes (1200px y más) */
-        @media (min-width: 1200px) {
-            .hero-title {
-                font-size: 4rem;
-            }
-            
-            .section-title {
-                font-size: 3rem;
-            }
-            
-            .transversal-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-
-        /* ===== ANIMACIONES Y EFECTOS SUTILES ===== */
+        /* ====== ANIMACIONES Y EFECTOS ADICIONALES ====== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -476,250 +526,217 @@
             }
         }
 
+        .level-card,
         .phase-card {
             animation: fadeInUp 0.6s ease-out;
         }
 
-        .transversal-item {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        /* ===== ACCESIBILIDAD ===== */
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            
+        /* Smooth scrolling mejorado */
+        @media (prefers-reduced-motion: no-preference) {
             html {
-                scroll-behavior: auto;
+                scroll-behavior: smooth;
             }
-        }
-
-        /* Focus states para accesibilidad */
-        a:focus,
-        button:focus {
-            outline: 2px solid var(--color-secondary);
-            outline-offset: 2px;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="https://ialab.com.ar/webia/wp-content/uploads/2025/02/11.png" alt="IALAB Logo" class="logo-img">
-                </div>
-                <nav class="nav">
-                    <ul class="nav-list">
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#metodologia">Metodología</a></li>
-                        <li><a href="#fases">Fases</a></li>
-                        <li><a href="#contacto">Contacto</a></li>
-                    </ul>
-                </nav>
+    <!-- ====== HEADER ====== -->
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="https://ialab.com.ar/webia/wp-content/uploads/2025/02/11.png" alt="IALAB Logo">
             </div>
-        </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#madurez">Madurez</a></li>
+                <li><a href="#metodologia">Metodología</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Main Content -->
-    <main class="main">
+    <!-- ====== MAIN CONTENT ====== -->
+    <main>
         <!-- Hero Section -->
-        <section class="hero" id="inicio">
+        <section class="hero section" id="inicio">
             <div class="container">
                 <div class="hero-content">
-                    <h1 class="hero-title">Metodología de Implementación Agéntica</h1>
-                    <p class="hero-subtitle">Un proceso estructurado para la implementación exitosa de agentes de inteligencia artificial en organizaciones</p>
+                    <h1>Metodología de Implementación Agéntica UBA IALAB</h1>
+                    <p class="hero-subtitle">¿Cuál es el propósito que la organización busca alcanzar, y de qué manera la inteligencia artificial generativa puede ser una herramienta estratégica para impulsarlo?</p>
+                    <div class="agent-first-badge">
+                        AI FIRST + AGENT FIRST = AGÉNTICO POR DISEÑO
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Overview Section -->
-        <section class="overview" id="metodologia">
+        <!-- Niveles de Madurez Section -->
+        <section class="madurez-section section" id="madurez">
             <div class="container">
-                <h2 class="section-title">Nuestra Metodología</h2>
-                <p class="section-description">
-                    La metodología de implementación agéntica está diseñada para alinear expectativas, identificar objetivos y establecer las condiciones necesarias para el desarrollo exitoso de agentes de IA adaptados a las necesidades específicas de cada organización.
-                </p>
+                <div class="content-wrapper">
+                    <div class="section-header">
+                        <h2 class="section-title">Criterios para determinar la madurez organizacional en IA</h2>
+                        <p class="section-intro">
+                            Registrar el nivel de madurez organizacional en IA para adoptar la estrategia metodológica más adecuada
+                    </div>
+                    
+                    <div class="madurez-levels">
+                        <div class="level-card">
+                            <div class="level-icon">1</div>
+                            <h3>Madurez latente (baja)</h3>
+                            <p  style="text-align: center;">Organizaciones en las primeras etapas de adopción de IA que requieren mayor acompañamiento metodológico y desarrollo de capacidades internas. Necesitan un discovery extendido y validación continua de cada etapa.</p>
+                        </div>
+                        
+                        <div class="level-card">
+                            <div class="level-icon">2</div>
+                            <h3>Madurez emergente (intermedia)</h3>
+                            <p  style="text-align: center;">Organizaciones con experiencia intermedia en tecnología y procesos digitales. Pueden avanzar con discovery estándar y supervisión técnica especializada en las fases críticas.</p>
+                        </div>
+                        
+                        <div class="level-card">
+                            <div class="level-icon">3</div>
+                            <h3>Madurez focalizada (alta)</h3>
+                            <p style="text-align: center;">Organizaciones maduras tecnológicamente, con capacidad de implementar soluciones agénticas avanzadas. Requieren discovery acelerado y pueden asumir mayor autonomía en las fases de implementación.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Phases Section -->
-        <section class="phases" id="fases">
+        <!-- Metodología Section -->
+        <section class="metodologia-section section" id="metodologia">
             <div class="container">
-                <h2 class="section-title">Las 6 Fases del Proceso</h2>
-                
-                <!-- Phase 1 -->
-                <div class="phase-card">
-                    <div class="phase-header">
-                        <span class="phase-number">01</span>
-                        <h3 class="phase-title">Preparación Estratégica y Discovery</h3>
+                <div class="content-wrapper">
+                    <div class="section-header">
+                        <h2 class="section-title">Fases de la Metodología</h2>
                     </div>
-                    <div class="phase-content">
-                        <p class="phase-objective"><strong>Objetivo:</strong> Alinear expectativas, identificar objetivos, establecer insumos iniciales y determinar con claridad las condiciones necesarias para avanzar hacia el relevamiento funcional y el diseño del agente de IAGEN más adecuado.</p>
-                        <div class="phase-activities">
-                            <h4>Actividades clave:</h4>
-                            <ul>
+                    
+                    <div class="phases-container">
+                        <div class="phase-card">
+                            <div class="phase-header">
+                                <div class="phase-number">1</div>
+                                <h3>Preparación estratégica y Discovery</h3>
+                            </div>
+                            <div class="phase-objective"><strong>Objetivo:</strong> Alinear expectativas, identificar objetivos, establecer insumos iniciales y determinar con claridad las condiciones necesarias para avanzar hacia el relevamiento funcional y el diseño del agente más adecuado.</div>
+                            <ul class="phase-activities">
                                 <li>Definición de objetivos y principios</li>
-                                <li>Definición del alcance del proyecto</li>
+                                <li>Definición del alcance del proyecto: Prueba de Concepto (PoC), Prueba Piloto o Producto Mínimo Viable (MVP)</li>
                                 <li>Conformación de equipos multidisciplinarios</li>
                                 <li>Relevamiento del marco normativo e institucional</li>
                             </ul>
+                            <div class="phase-details">
+                                <h4>Checklist de condiciones mínimas para continuar</h4>
+                                <p>Designación de referentes funcionales, disponibilidad de procesos/documentación, y autorización para compartir datos relevantes.</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Phase 2 -->
-                <div class="phase-card">
-                    <div class="phase-header">
-                        <span class="phase-number">02</span>
-                        <h3 class="phase-title">Análisis Funcional y Diagnóstico</h3>
-                    </div>
-                    <div class="phase-content">
-                        <p class="phase-objective"><strong>Objetivo:</strong> Profundizar en los procesos seleccionados durante el discovery mediante el relevamiento detallado de tareas, flujos de información y condiciones técnicas.</p>
-                        <div class="phase-activities">
-                            <h4>Actividades clave:</h4>
-                            <ul>
-                                <li>Entrevistas y reuniones con actores clave</li>
-                                <li>Análisis y desglose de procesos actuales</li>
+                        
+                        <div class="phase-card">
+                            <div class="phase-header">
+                                <div class="phase-number">2</div>
+                                <h3>Análisis funcional y diagnóstico</h3>
+                            </div>
+                            <div class="phase-objective"><strong>Objetivo:</strong> Profundizar en los procesos seleccionados durante el discovery mediante el relevamiento detallado de tareas, flujos de información y condiciones técnicas.</div>
+                            <ul class="phase-activities">
+                                <li>Entrevistas y reuniones con actores clave (usuarios, técnicos, decisores)</li>
+                                <li>Análisis y desglose de procesos actuales (documental, observacional, microtareas)</li>
                                 <li>Identificación de problemas/fricciones y necesidades no cubiertas</li>
                                 <li>Diseño de escenarios de uso y mapeo de interacciones</li>
                                 <li>Validación de requisitos funcionales del agente</li>
+                                <li>Verificación de documentación y datos disponibilizados</li>
                             </ul>
+                            <div class="phase-details">
+                                <h4>Entregable</h4>
+                                <p>Especificación preliminar del agente incluyendo: tipo de agente propuesto, objetivos, entradas y salidas, reglas de funcionamiento, requerimientos de datos, límites y excepciones, criterios de éxito y monitoreo.</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Phase 3 -->
-                <div class="phase-card">
-                    <div class="phase-header">
-                        <span class="phase-number">03</span>
-                        <h3 class="phase-title">Ideación y Definición de Casos de Uso</h3>
-                    </div>
-                    <div class="phase-content">
-                        <p class="phase-objective"><strong>Objetivo:</strong> Identificar, estructurar y validar uno o más casos de uso priorizados a partir de los hallazgos del análisis funcional, para ser trasladados a diseño y desarrollo técnico.</p>
-                        <div class="phase-activities">
-                            <h4>Actividades clave:</h4>
-                            <ul>
+                        
+                        <div class="phase-card">
+                            <div class="phase-header">
+                                <div class="phase-number">3</div>
+                                <h3>Ideación y definición de casos de uso</h3>
+                            </div>
+                            <div class="phase-objective"><strong>Objetivo:</strong> Consolidar uno o más casos de uso viables, útiles y sostenibles, a partir de los hallazgos del relevamiento funcional.</div>
+                            <ul class="phase-activities">
                                 <li>Construcción de fichas de casos de uso</li>
                                 <li>Priorización de casos de uso (criterios: factibilidad, impacto, urgencia)</li>
                                 <li>Definición de criterios de éxito y métricas clave (KPI/OKR)</li>
                                 <li>Validación conceptual con usuarios reales</li>
+                                <li>Revisión legal y técnica</li>
+                                <li>Validación institucional</li>
+                                <li>Diagramas de flujo, mockups, prompts de ejemplo</li>
+                                <li>Simulación de entradas y salidas</li>
                             </ul>
+                            <div class="phase-details">
+                                <h4>Principios rectores</h4>
+                                <p>Los casos de uso deben tener impacto real, ser técnicamente viables y mantenibles. Deben surgir de la realidad funcional identificada, no de una ideación abstracta.</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Phase 4 -->
-                <div class="phase-card">
-                    <div class="phase-header">
-                        <span class="phase-number">04</span>
-                        <h3 class="phase-title">Prototipado y Pruebas Piloto</h3>
-                    </div>
-                    <div class="phase-content">
-                        <p class="phase-objective"><strong>Objetivo:</strong> Validar el comportamiento del agente de IAGen en un entorno controlado, mediante interacciones con usuarios reales o simulados, antes de su despliegue completo.</p>
-                        <div class="phase-activities">
-                            <h4>Actividades clave:</h4>
-                            <ul>
-                                <li>Desarrollo de prototipos funcionales</li>
-                                <li>Pruebas piloto con usuarios reales</li>
-                                <li>Evaluación de resultados, retroalimentación y aprendizajes</li>
+                        
+                        <div class="phase-card">
+                            <div class="phase-header">
+                                <div class="phase-number">4</div>
+                                <h3>Prototipado y Pruebas Piloto</h3>
+                            </div>
+                            <div class="phase-objective"><strong>Objetivo:</strong> Validar el desempeño del agente en un entorno controlado antes de su despliegue completo.</div>
+                            <ul class="phase-activities">
+                                <li>Desarrollo del prototipo: MVP funcional o simulado</li>
+                                <li>Pruebas piloto: Tareas reales o simuladas, con usuarios internos</li>
+                                <li>Análisis y mejora: Revisión de prompts, rediseño de flujos</li>
+                                <li>Decisión institucional: Recomendación formal para escalar, iterar o rediseñar</li>
                             </ul>
+                            <div class="phase-details">
+                                <h4>Tipos de prototipo</h4>
+                                <p>Simulado manual (solo ejemplos), interactivo limitado (respuesta real, sin integración), semiautónomo controlado (flujo funcional con revisión humana).</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Phase 5 -->
-                <div class="phase-card">
-                    <div class="phase-header">
-                        <span class="phase-number">05</span>
-                        <h3 class="phase-title">Implementación y Escalado</h3>
-                    </div>
-                    <div class="phase-content">
-                        <p class="phase-objective"><strong>Objetivo:</strong> Integrar el agente de IAGen validado en el entorno productivo de la organización, asegurando su operatividad en condiciones reales, su adopción institucional y su posibilidad de crecimiento transversal.</p>
-                        <div class="phase-activities">
-                            <h4>Actividades clave:</h4>
-                            <ul>
-                                <li>Desarrollo e integración con sistemas</li>
-                                <li>Capacitación del personal</li>
-                                <li>Despliegue gradual</li>
+                        
+                        <div class="phase-card">
+                            <div class="phase-header">
+                                <div class="phase-number">5</div>
+                                <h3>Implementación y escalado</h3>
+                            </div>
+                            <div class="phase-objective"><strong>Objetivo:</strong> Integrar el agente validado al entorno productivo, asegurando su funcionamiento real, adopción institucional y potencial de escalado.</div>
+                            <ul class="phase-activities">
+                                <li>Ajuste del diseño del agente incorporando aprendizajes del piloto</li>
+                                <li>Desarrollo e integración completa en sistemas reales</li>
+                                <li>Capacitación a usuarios y soporte</li>
+                                <li>Estrategia de adopción institucional</li>
+                                <li>Despliegue gradual con monitoreo</li>
+                                <li>Escalado controlado</li>
                             </ul>
+                            <div class="phase-details">
+                                <h4>Integración</h4>
+                                <p>Despliegue del agente en sistemas reales (ERP, CRM, intranet, formularios, APIs, repositorios) con seguridad y trazabilidad de datos.</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Phase 6 -->
-                <div class="phase-card">
-                    <div class="phase-header">
-                        <span class="phase-number">06</span>
-                        <h3 class="phase-title">Gobernanza y Mejora Continua</h3>
-                    </div>
-                    <div class="phase-content">
-                        <p class="phase-objective"><strong>Objetivo:</strong> Asegurar un uso responsable, ético y trazable del agente desplegado, y establecer mecanismos para su mantenimiento, mejora, escalado y expansión institucional mediante un modelo claro de asignación de responsabilidades.</p>
-                        <div class="phase-activities">
-                            <h4>Actividades clave:</h4>
-                            <ul>
+                        
+                        <div class="phase-card">
+                            <div class="phase-header">
+                                <div class="phase-number">6</div>
+                                <h3>Gobernanza y mejora continua</h3>
+                            </div>
+                            <div class="phase-objective"><strong>Objetivo:</strong> Asegurar un uso responsable, ético y trazable del agente desplegado, y establecer mecanismos para su mantenimiento, mejora, escalado y expansión institucional.</div>
+                            <ul class="phase-activities">
                                 <li>Monitoreo de uso, sesgos y resultados</li>
                                 <li>Evaluaciones periódicas de impacto</li>
                                 <li>Mecanismos de rendición de cuentas, trazabilidad y explicabilidad</li>
                                 <li>Retroalimentación constante desde los usuarios</li>
                             </ul>
+                            <div class="phase-details">
+                                <h4>Elementos transversales</h4>
+                                <p>Enfoque participativo y centrado en el usuario. Ética, transparencia y derechos humanos como ejes guía. Capacitación continua de equipos. Documentación y trazabilidad del proceso.</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Transversal Elements Section -->
-        <section class="transversal">
-            <div class="container">
-                <h2 class="section-title">Elementos Transversales</h2>
-                <div class="transversal-grid">
-                    <div class="transversal-item">
-                        <h4>Enfoque Participativo</h4>
-                        <p>Centrado en el usuario y sus necesidades específicas</p>
-                    </div>
-                    <div class="transversal-item">
-                        <h4>Ética y Transparencia</h4>
-                        <p>Derechos humanos como ejes guía del desarrollo</p>
-                    </div>
-                    <div class="transversal-item">
-                        <h4>Capacitación Continua</h4>
-                        <p>Formación permanente de equipos multidisciplinarios</p>
-                    </div>
-                    <div class="transversal-item">
-                        <h4>Documentación</h4>
-                        <p>Trazabilidad completa del proceso de implementación</p>
-                    </div>
-                    <div class="transversal-item">
-                        <h4>Comunicación Estratégica</h4>
-                        <p>Difusión del valor generado y resultados obtenidos</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer" id="contacto">
+    <!-- ====== FOOTER ====== -->
+    <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>IALAB</h4>
-                    <p>Implementación de Inteligencia Artificial para organizaciones</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Contacto</h4>
-                    <p>Email: info@ialab.com.ar</p>
-                    <p>Web: www.ialab.com.ar</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 IALAB. Todos los derechos reservados.</p>
-            </div>
+            <p>&copy; 2025 UBA IALAB - Metodología de Implementación Agéntica</p>
+            <p>AI FIRST + AGENT FIRST = AGÉNTICO POR DISEÑO</p>
         </div>
     </footer>
 </body>
